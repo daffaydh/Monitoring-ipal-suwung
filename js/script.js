@@ -126,7 +126,7 @@ function formatTwoDigits(num) {
 
 function updateLocalTime() {
   const nowUTC = new Date();
-  const nowWITA = new Date(nowUTC.getTime() + 8 * 60 * 60 * 1000); // Tambah 8 jam
+  const nowWITA = new Date(nowUTC.getTime() ); // Tambah 8 jam
 
   // Format tanggal: 29 Mei 2025
   const tanggalOptions = { day: "2-digit", month: "long", year: "numeric" };
