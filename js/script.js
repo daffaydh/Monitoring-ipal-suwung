@@ -120,24 +120,29 @@ fetchData();
 setInterval(fetchData, 30000);
 
 // ⏰ Tambahan: Tampilkan tanggal & jam lokal secara real-time
-function formatTwoDigits(num) {
-  return num < 10 ? "0" + num : num;
-}
-
 function updateLocalTime() {
-  const nowUTC = new Date();
-  const nowWITA = new Date(nowUTC.getTime() ); // Tambah 8 jam
+  const now = new Date();
 
-  // Format tanggal: 29 Mei 2025
-  const tanggalOptions = { day: "2-digit", month: "long", year: "numeric" };
-  const tanggal = nowWITA.toLocaleDateString("id-ID", tanggalOptions);
+  // Format tanggal: 29 Mei 2025 dengan timezone WITA (Asia/Makassar)
+  const tanggalOptions = {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    timeZone: "Asia/Makassar",
+  };
+  const tanggal = now.toLocaleDateString("id-ID", tanggalOptions);
 
-  // Format jam: HH:MM:SS
-  const jam = `${formatTwoDigits(nowWITA.getHours())}:${formatTwoDigits(
-    nowWITA.getMinutes()
-  )}:${formatTwoDigits(nowWITA.getSeconds())} WITA`;
+  // Format jam: HH:MM:SS WITA dengan timezone WITA (Asia/Makassar)
+  const timeOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+    timeZone: "Asia/Makassar",
+  };
+  const jam = now.toLocaleTimeString("id-ID", timeOptions) + " WITA";
 
-  // Tampilkan ke elemen HTML
+  // Update elemen HTML
   const tanggalElement = document.getElementById("waktu");
   const jamElement = document.getElementById("jam");
 
