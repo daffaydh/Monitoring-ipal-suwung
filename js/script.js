@@ -115,9 +115,9 @@ async function fetchData() {
   }
 }
 
-// Ambil data pertama kali dan perbarui tiap 30 detik
+// Ambil data pertama kali dan perbarui tiap 30 menit
 fetchData();
-setInterval(fetchData, 30000);
+setInterval(fetchData, 1800000);
 
 // ⏰ Tambahan: Tampilkan tanggal & jam lokal secara real-time
 function updateLocalTime() {
